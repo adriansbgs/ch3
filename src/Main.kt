@@ -29,16 +29,16 @@ fun play(user1: String, user2: String) {
 fun check (user1: String, user2: String, options: List<String>) {
 
 //    agar ga repot sama besar kecil, ubah aja semua jadi huruf kecil hehe
-    val user1 = user1.toLowerCase()
-    val user2 = user2.toLowerCase()
+    val user1lowerCase = user1.toLowerCase()
+    val user2lowerCase = user2.toLowerCase()
 
 //    membandingkan jika input user tidak ada di list
-    if (user1 !in options && user2 !in options) {
+    if (user1lowerCase !in options && user2lowerCase !in options) {
         println("Mohon masukan kembali pilihan anda")
     }
 //    Gatau kenapa kalau ga di define perbandingan user harus ada di list kaya gini, dia error terus
-    else if (user1 in options && user2 in options){
-        play(user1, user2)
+    else if (user1lowerCase in options && user2lowerCase in options){
+        play(user1lowerCase, user2lowerCase)
     }
     else (println("Mohon masukan kembali pilihan anda"))
 }
