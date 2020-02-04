@@ -1,16 +1,30 @@
 fun main() {
-    //Kalimat pembuka
-    println("Selamat datang di gunting batu kertas")
-    println("Pemain 1 silahkan pilih \"Batu\" \"Gunting\" atau \"Kertas\"")
 
-//    pakai list buat dijadikan database ala-ala
+    //    pakai list buat dijadikan database ala-ala
     val choose = listOf("batu", "gunting", "kertas")
+    val contArray = arrayOf(Player("Coba","Yeah"))
+    val playerData = mutableListOf((Player("","")))
+    println(playerData)
+    for (i in 1..2) {
+        println("Pemain $i silahkan pilih \"Batu\" \"Gunting\" atau \"Kertas\"")
+        //    Input untuk player1 dan player2 dan convert ke String
+        println("Masukan nama pemain $i")
+        val playerName = readLine()!!.toString()
+        println("Masukan pilihan pemain $i")
+        val playerChoose = readLine()!!.toString()
+        playerData.add(Player(playerName, playerChoose))
+        println(playerData[i].name)
+    }
 
-    //    Input untuk player1 dan player2 dan convert ke String
-    val player1 = readLine()!!.toString()
-    println("Mantap! Pemain 2 silahkan pilih \"Batu\" \"Gunting\" atau \"Kertas\"")
-    val player2 = readLine()!!.toString()
-    check(player1,player2,choose)
+
+//    //Kalimat pembuka
+//    println("Selamat datang di gunting batu kertas")
+//    println("Pemain 1 silahkan pilih \"Batu\" \"Gunting\" atau \"Kertas\"")
+//    //    Input untuk player1 dan player2 dan convert ke String
+//    val player1 = readLine()!!.toString()
+//    println("Mantap! Pemain 2 silahkan pilih \"Batu\" \"Gunting\" atau \"Kertas\"")
+//    val player2 = readLine()!!.toString()
+//    check(player1,player2,choose)
 
 }
 
