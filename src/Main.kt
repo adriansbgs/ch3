@@ -18,7 +18,7 @@ fun main() {
     }
 
     var result = check(playerData[1].choose,playerData[2].choose,choose)
-    playerData[result as Int].printData())
+    playerData[result as Int].printData()
 
 
 }
