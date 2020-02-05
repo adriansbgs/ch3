@@ -6,53 +6,53 @@ fun main() {
     val playerData = mutableListOf((Player("","")))
     println(playerData)
     for (i in 1..2) {
-        println("Pemain $i silahkan pilih \"Batu\" \"Gunting\" atau \"Kertas\"")
+        println("Selamat datang di mini-games Gunting Batu Kertas!")
+        println("=======================================")
         //    Input untuk player1 dan player2 dan convert ke String
         println("Masukan nama pemain $i")
         val playerName = readLine()!!.toString()
-        println("Masukan pilihan pemain $i")
+        println("Pemain $i silahkan pilih \"Batu\" \"Gunting\" atau \"Kertas\"")
         val playerChoose = readLine()!!.toString()
         playerData.add(Player(playerName, playerChoose))
-        println(playerData[i].name)
+//        println(playerData[i].name)
     }
 
+    var result = check(playerData[1].choose,playerData[2].choose,choose)
+    println(playerData[result as Int].printData())
 
-//    //Kalimat pembuka
-//    println("Selamat datang di gunting batu kertas")
-//    println("Pemain 1 silahkan pilih \"Batu\" \"Gunting\" atau \"Kertas\"")
-//    //    Input untuk player1 dan player2 dan convert ke String
-//    val player1 = readLine()!!.toString()
-//    println("Mantap! Pemain 2 silahkan pilih \"Batu\" \"Gunting\" atau \"Kertas\"")
-//    val player2 = readLine()!!.toString()
-//    check(player1,player2,choose)
 
 }
 
 //Inputan user masuk ke sini, berjumpa dengan rules-rules.
-fun play(user1: String, user2: String) {
-    when {user1 == "batu" && user2 == "gunting"  -> println("Pemain 1 menang")
-        user1 == "gunting" && user2 == "kertas" -> println("Pemain 1 menang")
-        user1 == "kertas" && user2 == "batu" -> println("Pemain 1 menang")
+fun play(user1: String, user2: String): Any {
+    var i = 0
+    when {user1 == "batu" && user2 == "gunting"  -> i = 1
+        user1 == "gunting" && user2 == "kertas" -> i = 1
+        user1 == "kertas" && user2 == "batu" -> i = 1
         user1 == user2 -> println("Seri! Ayo coba lagi")
-        else -> println("Pemain 2 menang")
+        else -> i = 2
 
     }
+    return i
 }
 
 //Function ini gunanya buat cek inputan user, agar tidak input selain gunting, batu, dan kertas
-fun check (user1: String, user2: String, options: List<String>) {
+fun check (user1: String, user2: String, options: List<String>): Any {
 
 //    agar ga repot sama besar kecil, ubah aja semua jadi huruf kecil hehe
     val user1lowerCase = user1.toLowerCase()
     val user2lowerCase = user2.toLowerCase()
+    var i = 0
 
 //    membandingkan jika input user tidak ada di list
-    if (user1lowerCase !in options && user2lowerCase !in options) {
+    if (user1lowerCase !in options || user2lowerCase !in options) {
         println("Mohon masukan kembali pilihan anda")
     }
 //    Gatau kenapa kalau ga di define perbandingan user harus ada di list kaya gini, dia error terus
     else if (user1lowerCase in options && user2lowerCase in options){
-        play(user1lowerCase, user2lowerCase)
+      var i = play(user1lowerCase, user2lowerCase)
+        return i
     }
     else (println("Mohon masukan kembali pilihan anda"))
+    return i
 }
