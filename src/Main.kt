@@ -1,29 +1,3 @@
-fun main() {
-
-    //    pakai list buat dijadikan database ala-ala
-    val choose = listOf("batu", "gunting", "kertas")
-    var playerChoose = ""
-    val playerData = mutableListOf((Player("", "")))
-    for (i in 1..2) {
-        println("Selamat datang di mini-games Gunting Batu Kertas!")
-        println("=======================================")
-        //    Input untuk player1 dan player2 dan convert ke String
-        println("Masukan nama pemain $i")
-        val playerName = readLine()!!.toString()
-        println("Pemain $i silahkan pilih \"Batu\" \"Gunting\" atau \"Kertas\"")
-        do {
-            playerChoose = readLine()!!.toString()
-            var j = check(playerChoose, choose)
-
-        } while (j !== 1)
-
-        playerData.add(Player(playerName, playerChoose))
-    }
-    var result = play(playerData[1].choose.toLowerCase(), playerData[2].choose.toLowerCase())
-    playerData[result as Int].printData()
-
-}
-
 //Inputan user masuk ke sini, berjumpa dengan rules-rules.
 fun play(user1: String, user2: String): Any {
     var i = 0
@@ -48,10 +22,49 @@ fun check(user1: String, options: List<String>): Any {
     if (user1lowerCase !in options) {
         println("Mohon masukan kembali pilihan anda")
         i = 0
-    }
-    else if (user1lowerCase in options) {
+    } else if (user1lowerCase in options) {
         i = 1
 
     } else (println("Mohon masukan kembali pilihan anda"))
     return i
+}
+
+fun main() {
+    //    pakai list buat dijadikan database ala-ala
+    val choose = listOf("batu", "gunting", "kertas")
+    var playerChoose = ""
+    val playerData = mutableListOf((Player("", "")))
+
+    do {
+        for (i in 1..2) {
+            println("Selamat datang di mini-games Gunting Batu Kertas!")
+            println("=======================================")
+            //    Input untuk player1 dan player2 dan convert ke String
+            println("Masukan nama pemain $i")
+            val playerName = readLine()!!.toString()
+            println("Pemain $i silahkan pilih \"Batu\" \"Gunting\" atau \"Kertas\"")
+            do {
+                playerChoose = readLine()!!.toString()
+                var j = check(playerChoose, choose)
+
+            } while (j !== 1)
+
+            playerData.add(Player(playerName, playerChoose))
+        }
+
+        var result = play(playerData[1].choose.toLowerCase(), playerData[2].choose.toLowerCase())
+        playerData[result as Int].printData()
+
+        println("Mau main lagi? (Y)/(N)")
+        var playAgain = readLine()!!
+        if (playAgain!!.toLowerCase() == "y") {
+            for (i in 1..2) {
+                playerData.removeAt(1)
+            }
+        } else if (playAgain!!.toLowerCase() == "n") {
+            System.exit(0)
+        } else "Harap pilih y/n"
+
+
+    } while (playAgain == "y")
 }

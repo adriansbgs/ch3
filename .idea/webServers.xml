@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="WebServers">
+    <option name="servers">
+      <webServer id="66951f70-7751-47ad-9177-8c8dd30d9d03" name="Home Sweet Home" url="http://localhost">
+        <fileTransfer port="0" mountedRoot="C:\Users\dell\OneDrive\Me\Kotlin" accessType="MOUNT" />
+      </webServer>
+    </option>
+  </component>
+</project>

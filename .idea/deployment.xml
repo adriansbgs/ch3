@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="PublishConfigData" serverName="Home Sweet Home" uploadOnCheckin="66951f70-7751-47ad-9177-8c8dd30d9d03">
+    <serverData>
+      <paths name="Home Sweet Home">
+        <serverdata>
+          <mappings>
+            <mapping local="$PROJECT_DIR$" web="/" />
+          </mappings>
+        </serverdata>
+      </paths>
+    </serverData>
+    <option name="myUploadOnCheckinName" value="Home Sweet Home" />
+  </component>
+</project>
