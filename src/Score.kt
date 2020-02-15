@@ -1,4 +1,4 @@
-class Score(var winnerData: winnerInterface) {
+class Score(var winnerData: WinnerInterface) {
     fun score(listWinner: MutableList<String>, currentWinner: String, currentLoser: String) {
         val winnerTimes = listWinner.count { it == "$currentWinner" }
         val loserTimes = listWinner.count { it == "$currentLoser" }

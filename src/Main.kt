@@ -1,5 +1,5 @@
 class Main() {
-    companion object : winnerInterface {
+    companion object : WinnerInterface {
         //Inputan user masuk ke sini, berjumpa dengan rules-rules.
         private fun play(user1: String, user2: String, counter1: Int, counter2: Int): Any {
             var i: Int? = null
@@ -29,6 +29,7 @@ class Main() {
             return i
         }
 
+        // counter sebagai penghitung indeks pemain 1 dan pemain 2
         private var counter1 = -1
         private var counter2 = 0
 
@@ -37,6 +38,7 @@ class Main() {
 
             val choose = listOf("batu", "gunting", "kertas")
             var playerChoose: String? = null
+            var playerName = ""
             val winnerDB = mutableListOf<String>()
             val playerData = mutableListOf(Player("", ""))
             var playAgain = "n"
@@ -48,8 +50,6 @@ class Main() {
 
             do {
                 for (i in 1..2) {
-                    //    Input untuk player1 dan player2 dan convert ke String
-                    var playerName = ""
                     if (playAgain == "n") {
                         println("Masukan nama kamu wahai pemain $i")
                         playerName = readLine()!!.toString()
@@ -68,12 +68,14 @@ class Main() {
                 }
                 counter1 += 2
                 counter2 += 2
+
                 val result = play(
                     playerData[counter1].choose!!.toLowerCase(),
                     playerData[counter2].choose!!.toLowerCase(),
                     counter1,
                     counter2
                 )
+
                 if (result == -1) {
                     println("Seri! Jangan-jangan kalian jodoh ciye. Ayo coba lagi")
                     println("Lagi ga nih? (Y)/(N)")
