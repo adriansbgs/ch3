@@ -1,20 +1,20 @@
 class Main() {
     companion object : winnerInterface {
         //Inputan user masuk ke sini, berjumpa dengan rules-rules.
-        fun play(user1: String, user2: String, counter1: Int, counter2: Int): Any {
+        private fun play(user1: String, user2: String, counter1: Int, counter2: Int): Any {
             var i: Int? = null
-            when {
-                user1 == "batu" && user2 == "gunting" -> i = counter1
-                user1 == "gunting" && user2 == "kertas" -> i = counter1
-                user1 == "kertas" && user2 == "batu" -> i = counter1
-                user1 == user2 -> i = -1
-                else -> i = counter2
+            i = when {
+                user1 == "batu" && user2 == "gunting" -> counter1
+                user1 == "gunting" && user2 == "kertas" -> counter1
+                user1 == "kertas" && user2 == "batu" -> counter1
+                user1 == user2 -> -1
+                else -> counter2
             }
             return i
         }
 
         //Function ini gunanya buat cek inputan user, agar tidak input selain gunting, batu, dan kertas
-        fun check(user1: String, options: List<String>): Any {
+        private fun check(user1: String, options: List<String>): Any {
 
             val user1lowerCase = user1.toLowerCase()
             var i = 0
@@ -29,8 +29,8 @@ class Main() {
             return i
         }
 
-        var counter1 = -1
-        var counter2 = 0
+        private var counter1 = -1
+        private var counter2 = 0
 
         @JvmStatic
         fun main(args: Array<String>) {
@@ -42,16 +42,19 @@ class Main() {
             var playAgain = "n"
             var j = 0
             var score = Score(this)
+
+            println("Selamat datang di mini-game Gunting, Batu, Kertas!")
+            println("===================================================")
+
             do {
                 for (i in 1..2) {
-                    println("Selamat datang di mini-games Gunting Batu Kertas!")
-                    println("=======================================")
                     //    Input untuk player1 dan player2 dan convert ke String
                     var playerName = ""
                     if (playAgain == "n") {
-                        println("Masukan nama pemain $i")
+                        println("Masukan nama kamu wahai pemain $i")
                         playerName = readLine()!!.toString()
                     } else {
+                        println()
                         playerName = playerData[i].name
                     }
                     println("Pemain $i silahkan pilih \"Batu\" \"Gunting\" atau \"Kertas\"")
@@ -65,28 +68,41 @@ class Main() {
                 }
                 counter1 += 2
                 counter2 += 2
-                var result = play(
+                val result = play(
                     playerData[counter1].choose!!.toLowerCase(),
                     playerData[counter2].choose!!.toLowerCase(),
                     counter1,
                     counter2
                 )
                 if (result == -1) {
-                    println("Seri! Ayo coba lagi")
+                    println("Seri! Jangan-jangan kalian jodoh ciye. Ayo coba lagi")
+                    println("Lagi ga nih? (Y)/(N)")
+                    playAgain = readLine()!!.toLowerCase()
+                    if (playAgain == "y") {
+                        println("Asiiik! Babak penentuan nih. Let's Go!!!")
+                    }
                 } else if (result !== -1) {
                     playerData[result as Int].printData()
                     winnerDB.add(playerData[result].name)
-                    score.score(winnerDB, playerData[result].name)
-                    println("Mau main lagi? (Y)/(N)")
+                    if (result == counter1) {
+                        score.score(winnerDB, playerData[counter1].name, playerData[counter2].name)
+                    } else if (result == counter2) {
+                        score.score(winnerDB, playerData[counter2].name, playerData[counter1].name)
+                    }
+                    println("Main lagi ga? Kali aja menang abis ini (Y)/(N)")
                     playAgain = readLine()!!.toLowerCase()
+                    if (playAgain == "y") {
+                        println("Mantap! Mari adu suit!!")
+                    }
                 }
 
             } while (playAgain == "y")
+            println("Yah udahan :( Terimakasih sudah mau bermain!")
         }
 
         override fun kirimdata(winners: MutableList<String>) {
-
         }
+
 
     }
 }
