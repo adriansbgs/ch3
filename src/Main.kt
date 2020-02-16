@@ -14,18 +14,18 @@ class Main() {
         }
 
         //Function ini gunanya buat cek inputan user, agar tidak input selain gunting, batu, dan kertas
-        private fun check(user1: String, options: List<String>): Any {
+        private fun check(userChoose: String, options: List<String>, user: String): Any {
 
-            val user1lowerCase = user1.toLowerCase()
+            val user1lowerCase = userChoose.toLowerCase()
             var i = 0
 
             if (user1lowerCase !in options) {
-                println("Mohon masukan kembali pilihan anda")
+                println("Pilihannya hanya ada Batu, Gunting, dan Kertas ya $user, bukan \"$userChoose\" :)")
                 i = 0
             } else if (user1lowerCase in options) {
                 i = 1
 
-            } else (println("Mohon masukan kembali pilihan anda"))
+            } else (println("Pilihannya hanya ada Batu, Gunting, dan Kertas ya $user, bukan \"$userChoose\" :)"))
             return i
         }
 
@@ -60,7 +60,7 @@ class Main() {
                     println("Pemain $i silahkan pilih \"Batu\" \"Gunting\" atau \"Kertas\"")
                     do {
                         playerChoose = readLine()!!.toString()
-                        val j = check(playerChoose, choose)
+                        val j = check(playerChoose, choose, playerName)
 
                     } while (j !== 1)
 
