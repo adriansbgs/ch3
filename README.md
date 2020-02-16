@@ -10,7 +10,7 @@ Game suit gunting, batu, dan kertas ini dapat dimainkan minimal oleh 2 orang (ya
 
 ## Flowchart
 
-[Lihat Flowchart](https://tinyurl.com/r2koyaq) 
+[Lihat Flowchart](https://tinyurl.com/vxmzcgb) 
 
 
 
