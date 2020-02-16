@@ -1,4 +1,4 @@
-# [Chapter 3] Code Challenge
+# [Ch3] Code Challenge
 
 Game suit gunting, batu, dan kertas ini dapat dimainkan minimal oleh 2 orang (ya bisa juga sendiri sih hehe). Terdapat juga fitur skor agar permainan semakin kompetitif.
 
